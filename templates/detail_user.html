@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.first }} Details {% endblock %}
+
+{% block content %}
+    <img style="height: 20%; width: 20%;" src={{user.image}} alt={{user.first}}}}>
+
+    <h2>Hi I am {{user.first}} {{user.last}}</h2>
+    <form action="/{{user.id}}/add_post">
+        <button>Add Post</button>
+    </form>
+    
+    <form action="/">
+        <button>Home</button>
+    </form>
+    <form action="/{{user.id}}/edit">
+        <button>Edit</button>
+    </form>
+    <form action="/{{user.id}}/delete">
+        <button>Delete</button>
+    </form>
+
+    <h2>Posts from {{user.first}}</h2>
+
+    <ul>
+        {% for post in posts %}
+            {% if post.user_id == user.id%}
+                <li><a href="/{{user.id}}/{{post.id}}">
+                        <h3>{{post.title}}</h3> 
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    {% endblock %}

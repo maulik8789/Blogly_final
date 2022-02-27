@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Home Blogly{% endblock %}
+
+{% block content %}
+
+<h2>All User</h2>
+    <ul>
+        {% for user in users %}
+        <li><a href="/{{user.id}}">{{user.first}} {{user.last}}</a></li>
+        {% endfor %}
+    </ul>
+<h2>Add New User</h2>
+    <form action="/" method="post">
+        <input type="text" name="first_name" placeholder="enter first name">
+        <input type="text" name="last_name" placeholder="enter last name">
+        <input type="url" name="image" placeholder="enter image link">
+        <Button>Add User</Button>
+    </form>
+
+<h2>Show List of Tags</h2>
+    <form action="/tags">
+        <button name="tags" value="Go To Tags">Go To Tags</button>
+    </form>
+
+{% endblock %}

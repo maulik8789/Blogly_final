@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}List of Tags{% endblock %}
+
+{% block content %}
+
+    <h1>List of Tags</h1>
+    <ul>
+        {% for tag in tags %}
+            <li><a href="/tags/{{tag.id}}">{{tag.name}}</a>
+                <form action="/tags/{{tag.id}}/edit_tag">
+                    <button>Edit</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <form action="/tags" method="post">
+        <label for="tag">Tag Name</label>
+        <input type="text" id="tag" name="name" placeholder="Enter a name for the tag">
+        <button name="add_tag" value="Create New Tag">Create New Tag</button>
+    </form>
+
+    <form action="/">
+        <button>Home</button>
+
+{% endblock%}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.first }} Post {% endblock %}
+
+{% block content %}
+<h1>Add Post for {{ user.first }} {{ user.last }}</h1>
+<form action="/{{ user.id }}/detail_post" method="post">
+    <label for="title">Title</label>
+    <input style="margin-left: 20px; margin-bottom: 10px;" type="text" name="title" id="title"><br>
+    <label style="vertical-align: top;" for="content">Content</label>
+    <textarea name="content" id="content" cols="50" rows="30"></textarea><br>
+    <input style="margin-left: 55px;" type="datetime-local" name="created_at" id=""><br>
+    <h3 style="margin-left: 55px;">Add tag for the Post</h3>
+    {% for tag in tags %}
+        <label style="margin-left: 55px; margin-top: -10px;" for="{{tag}}">{{tag.name}}</label>
+        <input type="radio" name="tag" value="{{tag.id}}" id="{{tag}}"><br>
+    {% endfor %}
+    
+    <input style="margin-top: 10px;" type="submit" value="Add Post">
+    <input type="reset" value="Cancel">
+
+</form>
+
+{% endblock %}

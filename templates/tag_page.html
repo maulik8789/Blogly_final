@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}{{tag.name}}{% endblock %}
+
+{% block content %}
+
+    <h1>Posts related to {{tag.name}}</h1>
+    
+    {% for post in tag.posts_of_tags %}
+        {% for user in users %}
+            {% if user.id == post.user_id %}
+                <h1>{{post.title}} by {{user.first}}</h1>
+                <p>{{post.content}}</p>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    <form action="/">
+        <button>Home</button>
+{% endblock %}

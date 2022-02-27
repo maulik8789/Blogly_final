@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.first }} Post {% endblock %}
+
+{% block content %}
+    <h1>{{post.title}}</h1>
+    <p>{{post.content}}</p>
+    <span style="font-weight: bolder;">Tag:</span><span> {{post.tags_for_posts[0].name}}</span>
+    <form action="/" style="margin-top: 10px;">
+        <button>Home</button>
+    
+{% endblock %}
