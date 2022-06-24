@@ -62,7 +62,7 @@ class Tag(db.Model):
 
     def __repr__(self):
         t = self
-        return f"<Tag id = {t.id}> name = {t.name}>"
+        return f"<Tag id = {t.id} name = {t.name}>"
 
     id = db.Column(db.Integer,
                    primary_key = True,
@@ -79,7 +79,7 @@ class PostTag(db.Model):
 
     def __repr__(self):
         pt = self
-        return f"<Tag post_id = {pt.post_id}> tag_id = {pt.tag_id}>"
+        return f"<PostTag post_id = {pt.post_id}> tag_id = {pt.tag_id}>"
 
     post_id = db.Column(db.Integer,
                    db.ForeignKey('posts.id'),
